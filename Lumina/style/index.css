@@ -1,0 +1,24 @@
+:root {
+  --primary: yellow;
+  --bg: #c7c7cc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+.navbar .nav-bar {
+  width: 80%;
+  margin: 0 auto;
+  border: 5px solid #d21a1a;
+  padding: 20px;
+}
