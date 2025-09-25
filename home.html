@@ -1,176 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumina</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="main">
-
-    <!-- Sidebar kiri -->
-    <nav class="navbar">
-      <div>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <!-- Sidebar kiri -->
+      <nav class="navbar">
+        <div>
           <img class="logo" src="./img/Logo.png" alt="Lumina.png" />
         </div>
-      <ul>
-        <li class="nav-item active"><i class="fa-solid fa-house"></i><a href="#">Dashboard</a></li>
-        <li class="nav-item"><i class="fa-solid fa-utensils"></i><a href="#">Food Order</a></li>
-        <li class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i><a href="#">Order History</a></li>
-        <li class="nav-item"><i class="fa-solid fa-gear"></i><a href="#">Settings</a></li>
-      </ul>
-    </nav>
+        <ul>
+          <li class="nav-item active">
+            <i class="fa-solid fa-house"></i><a href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <i class="fa-solid fa-utensils"></i><a href="#">Food Order</a>
+          </li>
+          <li class="nav-item">
+            <i class="fa-solid fa-clock-rotate-left"></i
+            ><a href="#">Order History</a>
+          </li>
+          <li class="nav-item">
+            <i class="fa-solid fa-gear"></i><a href="#">Settings</a>
+          </li>
+        </ul>
+      </nav>
 
-    <!-- Tengah (hero + content) -->
-    <section class="hero">
-      <!-- Hero -->
-      <div class="hero-item-1">
-        <h2>What're you craving today?</h2>
-        <form class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="What do you want eat today...">
-        </form>
-      </div>
-
-      <!-- Banner -->
-      <div class="display-item-2">
-        <div class="text">
-          <h2>Make your lunch</h2>
-          <h2>be better</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>sed do eiusmod tempor incididunt.</p>
+      <!-- Tengah (hero + content) -->
+      <section class="hero">
+        <!-- Hero -->
+        <div class="hero-item-1">
+          <h2>What're you craving today?</h2>
+          <form class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="What do you want eat today..." />
+          </form>
         </div>
-        <img src="img/image-of-young-brunette-asian-woman-smiling-and-ho-2021-08-30-02-13-34-utc 1.png">
-      </div>
 
-      <!-- Category -->
-      <div class="display-item-3">
-        <h5>Category</h5>
-        <div class="view-all">
-          <a href="#"><h5>View all</h5></a>
-          <i class="fa-solid fa-chevron-right"></i>
+        <!-- Banner -->
+        <div class="display-item-2">
+          <div class="text">
+            <h2>Make your lunch</h2>
+            <h2>be better</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br />sed
+              do eiusmod tempor incididunt.
+            </p>
+          </div>
+          <img
+            src="img/image-of-young-brunette-asian-woman-smiling-and-ho-2021-08-30-02-13-34-utc 1.png"
+          />
         </div>
+
+        <!-- Category -->
+        <div class="display-item-3">
+          <h5>Category</h5>
+          <div class="view-all">
+            <a href="#"><h5>View all</h5></a>
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+        </div>
+
+        <div class="category">
+          <div class="cat-item">
+            <i class="fa-solid fa-mug-hot fa-2x"></i>
+            <h4>Beverage</h4>
+          </div>
+          <div class="cat-item active-category">
+            <i class="fa-solid fa-burger fa-2x"></i>
+            <h4>Food</h4>
+          </div>
+        </div>
+
+        <!-- Food swiper -->
+        <h3 class="section-title">Food</h3>
+        <div class="swiper food-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide card">
+              <img src="./img/Sate.jpeg" alt="Sate" />
+              <p>Sate - Rp. 10.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/sj-Jinnqw9bHjI-unsplash (1).jpg" alt="Dimsum" />
+              <p>Dimsum - Rp. 5.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img
+                src="./img/2e373c2ef0bf36c9e8475cbf93347db5a3496309.avif"
+                alt="Soto Ayam"
+              />
+              <p>Soto Ayam - Rp. 10.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img
+                src="./img/kobby-mendez-q54Oxq44MZs-unsplash (1).jpg"
+                alt="Donat"
+              />
+              <p>Donat - Rp. 4.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/Roti-daging.jpeg" alt="Roti Daging" />
+              <p>Roti Daging - Rp. 5.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/Tango.jpg" alt="tango" />
+              <p>tango - Rp. 3.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent order swiper -->
+        <h3 class="section-title">Recent Order</h3>
+        <div class="swiper recent-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide card">
+              <img src="./img/pizza.jpg" alt="Pizza" />
+              <p>Pizza - Rp. 20.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/eskrim.jpg" alt="Ice Cream" />
+              <p>Ice Cream - Rp. 8.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/hotdog.jpg" alt="Hotdog" />
+              <p>Hotdog - Rp. 12.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/Sate.jpeg" alt="Sate" />
+              <p>Sate - Rp. 10.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/sj-Jinnqw9bHjI-unsplash (1).jpg" alt="dimsum" />
+              <p>Dimsum - Rp. 5.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/Sate.jpeg" alt="sate" />
+              <p>Sate - Rp. 10.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="swiper-slide card">
+              <img src="./img/eskrim.jpg" alt="Ice Cream" />
+              <p>Ice Cream - Rp. 8.000</p>
+              <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </section>
+
+      <!-- Sidebar kanan -->
+      <aside class="navbar-right">
+        <div class="item-top">
+          <h2>Hello, guest</h2>
+          <i class="fa-solid fa-circle-user fa-2x"></i>
+        </div>
+        <div class="item-bottom">
+          <h4>Order Menu</h4>
+          <p>There's nothing to order</p>
+        </div>
+        <hr />
+      </aside>
+    </div>
+
+    <div id="loginPopup" class="popup hidden">
+      <div class="popup-content">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Enter your name" />
+        <input type="text" id="password" placeholder="Enter your password" />
+        <p>signup</p>
+        <button id="loginBtn">Login</button>
+        <button id="closePopup">Cancel</button>
       </div>
-
-      <div class="category">
-        <div class="cat-item"><i class="fa-solid fa-mug-hot fa-2x"></i><h4>Beverage</h4></div>
-        <div class="cat-item active-category"><i class="fa-solid fa-burger fa-2x"></i><h4>Food</h4></div>
-      </div>
-
- <!-- Food swiper -->
-<h3 class="section-title">Food</h3>
-<div class="swiper food-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide card">
-      <img src="./img/Group 40.jpg" alt="Sate">
-      <p>Sate - Rp. 10.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-    <div class="swiper-slide card">
-      <img src="../img/food2.jpg" alt="Dimsum">
-      <p>Dimsum - Rp. 5.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-    <div class="swiper-slide card">
-      <img src="../img/food3.jpg" alt="Soto Ayam">
-      <p>Soto Ayam - Rp. 10.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/food3.jpg" alt="Soto Ayam">
-      <p>Soto Ayam - Rp. 10.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/food3.jpg" alt="Soto Ayam">
-      <p>Soto Ayam - Rp. 10.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/food3.jpg" alt="Soto Ayam">
-      <p>Soto Ayam - Rp. 10.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-  </div>
-</div>
-
-<!-- Recent order swiper -->
-<h3 class="section-title">Recent Order</h3>
-<div class="swiper recent-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide card">
-      <img src="../img/recent1.jpg" alt="Pizza">
-      <p>Pizza - Rp. 20.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-    <div class="swiper-slide card">
-      <img src="../img/recent2.jpg" alt="Ice Cream">
-      <p>Ice Cream - Rp. 8.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-    <div class="swiper-slide card">
-      <img src="../img/recent3.jpg" alt="Hotdog">
-      <p>Hotdog - Rp. 12.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/recent3.jpg" alt="Hotdog">
-      <p>Hotdog - Rp. 12.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/recent3.jpg" alt="Hotdog">
-      <p>Hotdog - Rp. 12.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/recent3.jpg" alt="Hotdog">
-      <p>Hotdog - Rp. 12.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
-    </div>
-        <div class="swiper-slide card">
-      <img src="../img/recent3.jpg" alt="Hotdog">
-      <p>Hotdog - Rp. 12.000</p>
-      <button class="add-cart"><i class="fa-solid fa-plus"></i></button>
     </div>
 
-  </div>
-  <div class="swiper-pagination"></div>
-</div>
-    </section>
-
-    <!-- Sidebar kanan -->
-    <aside class="navbar-right">
-      <div class="item-top">
-        <h2>Hello, guest</h2>
-        <i class="fa-solid fa-circle-user fa-2x"></i>
-      </div>
-      <div class="item-bottom">
-        <h4>Order Menu</h4>
-        <p>There's nothing to order</p>
-      </div>
-      <hr>
-    </aside>
-
-  </div>
-
-  <div id="loginPopup" class="popup hidden">
-    <div class="popup-content">
-      <h2>Login</h2>
-      <input type="text" id="username" placeholder="Enter your name">
-      <input type="text" id="password" placeholder="Enter your password">
-      <p>signup</p>
-      <button id="loginBtn">Login</button>
-      <button id="closePopup">Cancel</button>
-    </div>
-  </div>
-
-  <!-- Swiper.js -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
