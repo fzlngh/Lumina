@@ -7,29 +7,53 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    public function getValidatingOrders()
+{
+    $orders = DB::table('orders')
+        ->join('face_logs', 'orders.id', '=', 'face_logs.order_id')
+        ->where('orders.status', 'validating')
+        ->select('orders.id', 'orders.user_id', 'orders.status', 'face_logs.hash')
+        ->get();
+
+    return response()->json($orders);
+}
+
+
     public function validateOrder($id)
-    {
-        $order = DB::table('orders')->where('id', $id)->first();
+{
+    $order = DB::table('orders')->where('id', $id)->first();
 
-        if (!$order) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Order not found'
-            ], 404);
-        }
+    if (!$order) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Order not found'
+        ], 404);
+    }
 
-        // Set status jadi "validating"
-        DB::table('orders')->where('id', $id)->update([
-            'status' => 'validating',
+    // Ambil face log terbaru (dummy, apapun wajah terakhir yg diupload)
+    $latestLog = DB::table('face_logs')->orderBy('created_at', 'desc')->first();
+
+    // Update status order
+    DB::table('orders')->where('id', $id)->update([
+        'status' => 'validating',
+        'updated_at' => now()
+    ]);
+
+    // Force relasikan log terbaru ke order ini
+    if ($latestLog) {
+        DB::table('face_logs')->where('id', $latestLog->id)->update([
+            'order_id' => $id,
             'updated_at' => now()
         ]);
-
-        return response()->json([
-            'status' => 'success',
-            'message' => "Order #$id siap divalidasi",
-            'data' => DB::table('orders')->where('id', $id)->first() // ambil data terbaru
-        ]);
     }
+
+    return response()->json([
+        'status' => 'success',
+        'message' => "Order #$id siap divalidasi",
+        'data' => DB::table('orders')->where('id', $id)->first()
+    ]);
+}
+
 
     public function confirmOrder(Request $request, $id)
     {
@@ -60,4 +84,14 @@ class OrderController extends Controller
             'result' => $request->result
         ]);
     }
+    public function getPendingFaces()
+{
+    $logs = DB::table('face_logs')
+        ->where('result', 'pending')
+        ->select('id', 'user_id', 'hash', 'result')
+        ->get();
+
+    return response()->json($logs);
+}
+
 }
