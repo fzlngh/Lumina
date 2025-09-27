@@ -13,6 +13,9 @@ const searchBox = document.querySelector(".search");
 const searchInput = searchBox.querySelector("Input");
 const heroTitle = document.querySelector(".text-opening");
 const recommendationsList = document.getElementById("recommendationsList");
+const heroSection = document.querySelectorAll(".hero");
+const navbarRight = document.querySelectorAll(".navbar-right");
+const foodOrder = document.querySelectorAll(".food-order");
 
 // Popup
 const loginPopup = document.getElementById("loginPopup");
@@ -68,13 +71,46 @@ const recentSwiper = new Swiper(".recent-swiper", {
 // ====================
 navItems.forEach((item) => {
   item.addEventListener("click", (e) => {
+    /* 
     if (!isLoggedIn && !item.classList.contains("active")) {
       e.preventDefault();
       showLogin();
       return;
     }
+    */
     navItems.forEach((i) => i.classList.remove("active"));
     item.classList.add("active");
+
+    // Jika Dashboard non avtive → heroSection disembunyikan
+    if (item.querySelector("h4").textContent.trim() === "Dashboard") {
+      heroSection.forEach((hero) => {
+        hero.style.display = "block";
+      });
+    } else {
+      heroSection.forEach((hero) => {
+        hero.style.display = "none";
+      });
+    }
+
+    if (item.querySelector("h4").textContent.trim() === "Dashboard") {
+      navbarRight.forEach((navRight) => {
+        navRight.style.display = "block";
+      });
+    } else {
+      navbarRight.forEach((navRight) => {
+        navRight.style.display = "none";
+      });
+    }
+
+    if (item.querySelector("h4").textContent.trim() === "Dashboard") {
+      foodOrder.forEach((foodOrder) => {
+        foodOrder.style.display = "none";
+      });
+    } else {
+      foodOrder.forEach((foodOrder) => {
+        foodOrder.style.display = "flex";
+      });
+    }
   });
 });
 

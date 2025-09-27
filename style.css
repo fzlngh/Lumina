@@ -110,9 +110,9 @@
   transform: scale(1.1);
 }
 
-.nav-item a {
+.nav-item h4 {
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #495057;
   transition: all 0.3s ease;
@@ -1065,4 +1065,79 @@
 }
 .reset-btn:hover {
   background: #777;
+}
+
+/*==order menu==*/
+.food-order {
+  flex: 1; /* isi ruang sisa */
+  width: 1000px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Order Item */
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffc107;
+  border-radius: 10px;
+  padding: 12px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.order-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.order-qty {
+  background: white;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: bold;
+}
+
+.order-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.order-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.order-info p {
+  margin: 2px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.order-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-open-bill {
+  background: #ff7f32;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-open-bill:hover {
+  background: #e66a1e;
 }
