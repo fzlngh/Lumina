@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="home">
-    <div class="main">
+    <div class="main-dashboard">
       <!-- Sidebar kiri -->
       <nav class="navbar">
         <div>
@@ -47,11 +47,19 @@
       <section class="hero">
         <!-- Hero -->
         <div class="hero-item-1">
-          <h2>What're you craving today?</h2>
-          <form class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder="What do you want eat today..." />
-          </form>
+          <h2 class="text-opening">What're you craving today?</h2>
+
+          <!-- Kontainer untuk search + rekomendasi -->
+          <div class="search-wrapper">
+            <form class="search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" placeholder="What do you want eat today..." />
+            </form>
+
+            <div class="search-recommendations">
+              <ul id="recommendationsList"></ul>
+            </div>
+          </div>
         </div>
 
         <!-- Banner -->

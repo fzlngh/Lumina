@@ -9,12 +9,32 @@ const categories = document.querySelectorAll(".cat-item");
 const addCartBtns = document.querySelectorAll(".add-cart");
 const orderMenu = document.querySelector(".item-bottom");
 const userTitle = document.querySelector(".item-top h2");
+const searchBox = document.querySelector(".search");
+const searchInput = searchBox.querySelector("Input");
+const heroTitle = document.querySelector(".text-opening");
+const recommendationsList = document.getElementById("recommendationsList");
 
 // Popup
 const loginPopup = document.getElementById("loginPopup");
 const loginBtn = document.getElementById("loginBtn");
 const closeBtn = document.getElementById("closePopup");
 const usernameInput = document.getElementById("username");
+
+// ====================
+// DUMMY LIST REKOMENDASI
+// ====================
+const allRecommendations = [
+  "Pizza",
+  "Burger",
+  "Fried Rice",
+  "Sushi",
+  "Pasta",
+  "Ice Cream",
+  "Salad",
+  "Steak",
+  "Donut",
+  "Ramen",
+];
 
 // ====================
 // SWIPER INIT
@@ -57,6 +77,42 @@ navItems.forEach((item) => {
     item.classList.add("active");
   });
 });
+
+searchInput.addEventListener("focus", () => {
+  searchBox.classList.add("active");
+  heroTitle.classList.add("hidden");
+  showRecommendations(allRecommendations);
+});
+
+searchInput.addEventListener("blur", () => {
+  setTimeout(() => {
+    // beri jeda supaya klik rekomendasi tidak langsung hilang
+    searchBox.classList.remove("active");
+    heroTitle.classList.remove("hidden");
+    recommendationsList.innerHTML = ""; // clear
+  }, 200);
+});
+
+// ====================
+// RENDER REKOMENDASI KE LIST
+// ===================
+
+function showRecommendations(list) {
+  recommendationsList.innerHTML = "";
+  if (list.length === 0) {
+    recommendationsList.innerHTML = "<li>No results found</li>";
+    return;
+  }
+  list.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    li.addEventListener("click", () => {
+      searchInput.value = item; // isi input
+      recommendationsList.innerHTML = ""; // clear setelah dipilih
+    });
+    recommendationsList.appendChild(li);
+  });
+}
 
 // ====================
 // CATEGORY TOGGLE
