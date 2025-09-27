@@ -23,12 +23,12 @@ const usernameInput = document.getElementById("username");
 const foodSwiper = new Swiper(".food-swiper", {
   slidesPerView: 1,
   spaceBetween: 16,
-  freeMode: true,      
-  grabCursor: true,    
+  freeMode: true,
+  grabCursor: true,
   breakpoints: {
     640: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 }
-  }
+    1024: { slidesPerView: 3 },
+  },
 });
 
 // Swiper for Recent Order
@@ -39,22 +39,21 @@ const recentSwiper = new Swiper(".recent-swiper", {
   grabCursor: true,
   breakpoints: {
     640: { slidesPerView: 2 },
-    1024: { slidesPerView: 3 }
-  }
+    1024: { slidesPerView: 3 },
+  },
 });
-
 
 // ====================
 // NAVBAR ACTIVE + LOGIN GUARD
 // ====================
-navItems.forEach(item => {
+navItems.forEach((item) => {
   item.addEventListener("click", (e) => {
     if (!isLoggedIn && !item.classList.contains("active")) {
       e.preventDefault();
       showLogin();
       return;
     }
-    navItems.forEach(i => i.classList.remove("active"));
+    navItems.forEach((i) => i.classList.remove("active"));
     item.classList.add("active");
   });
 });
@@ -62,9 +61,9 @@ navItems.forEach(item => {
 // ====================
 // CATEGORY TOGGLE
 // ====================
-categories.forEach(cat => {
+categories.forEach((cat) => {
   cat.addEventListener("click", () => {
-    categories.forEach(c => c.classList.remove("active-category"));
+    categories.forEach((c) => c.classList.remove("active-category"));
     cat.classList.add("active-category");
   });
 });

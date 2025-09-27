@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OTP Verification</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: #f5f5f5;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="otp-page">
+      <h2>Enter OTP Code</h2>
+      <p>Please enter the 6-digit code sent to your phone</p>
+
+      <div id="otp-container">
+        <input type="number" id="otp-input" maxlength="6" autofocus />
+        <div class="otp-box"></div>
+        <div class="otp-box"></div>
+        <div class="otp-box"></div>
+        <div class="otp-box"></div>
+        <div class="otp-box"></div>
+        <div class="otp-box"></div>
+      </div>
+
+      <button class="btn-submit">Verify</button>
+
+      <div class="request-again">
+        Didn’t get the code? <a id="request-link">Request again</a>
+      </div>
+    </div>
+
+    <script>
+      const otpInput = document.getElementById("otp-input");
+      const otpBoxes = document.querySelectorAll(".otp-box");
+      const container = document.getElementById("otp-container");
+      const requestLink = document.getElementById("request-link");
+
+      otpInput.addEventListener("input", () => {
+        const value = otpInput.value.split("");
+        otpBoxes.forEach((box, index) => {
+          box.textContent = value[index] || "";
+          box.classList.remove("active");
+        });
+        if (value.length < otpBoxes.length) {
+          otpBoxes[value.length].classList.add("active");
+        }
+      });
+
+      // Klik kontainer → fokus input
+      container.addEventListener("click", () => otpInput.focus());
+
+      // Awal aktif di kotak pertama
+      otpBoxes[0].classList.add("active");
+
+      // Simulasi request lagi
+      requestLink.addEventListener("click", () => {
+        alert("Kode OTP baru sudah dikirim!");
+      });
+    </script>
+  </body>
+</html>

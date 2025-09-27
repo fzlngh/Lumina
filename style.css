@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-body {
+.home {
   font-family: "Poppins", Arial, sans-serif;
   background: #f8f9fa;
   color: #333;
@@ -779,86 +779,166 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
-  body {
-    padding-left: 240px;
-    padding-right: 280px;
-  }
+
+/* ----REGISTER PAGE----*/
+.register {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@media (max-width: 1200px) {
-  body {
-    padding-left: 220px;
-    padding-right: 260px;
-  }
+.register-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgb(255, 160, 18);
+  width: 400px;
 }
 
-@media (max-width: 992px) {
-  .display-item-2 {
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
-  }
-
-  .display-item-2 .text {
-    max-width: 100%;
-  }
-
-  .display-item-2 img {
-    width: 180px;
-    height: 180px;
-    margin-top: 1rem;
-  }
-
-  .display-item-2 h2 {
-    font-size: 1.6rem;
-  }
-
-  .display-item-2 p {
-    font-size: 0.95rem;
-  }
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding: 1rem;
-  }
+.form-group {
+  margin-bottom: 1rem;
+}
 
-  .hero h2 {
-    font-size: 1.6rem;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  color: #555;
+}
 
-  .search {
-    width: 100%;
-    max-width: 300px;
-  }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
 
-  .display-item-2 {
-    padding: 1rem;
-    margin-bottom: 2rem;
-  }
+.form-group textarea {
+  resize: vertical;
+  min-height: 70px;
+}
 
-  .display-item-2 h2 {
-    font-size: 1.8rem;
-  }
+.form-group-gender {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+}
 
-  .display-item-2 p {
-    font-size: 1rem;
-  }
+.form-group-gender label {
+  display: flex;
+  align-items: center; /* biar input & teks sejajar */
+  gap: 0.3rem; /* jarak radio ↔ teks */
+  cursor: pointer; /* UX lebih enak, bisa klik tulisan juga */
+}
 
-  .section-title {
-    font-size: 1.4rem;
-    margin: 2rem 0 1rem 0;
-  }
+.btn-submit {
+  width: 100%;
+  padding: 0.8rem;
+  background: #f8b602;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-  .swiper-slide.card {
-    padding: 1.5rem 1rem;
-  }
+.btn-submit:hover {
+  background: #d79901;
+}
 
-  .popup-content {
-    width: 90%;
-    max-width: 400px;
-    padding: 2rem;
-  }
+/* ----OTP PAGE----*/
+.otp-page {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgb(255, 160, 18);
+  text-align: center;
+  width: 350px;
+}
+
+.otp-page h2 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+#otp-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
+  cursor: text;
+}
+
+.otp-box {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.otp-box.active {
+  border-color: rgb(255, 160, 18);
+  box-shadow: 0 0 8px rgba(255, 206, 109, 0.911);
+}
+
+#otp-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-submit {
+  margin-top: 1rem;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: rgb(255, 160, 18);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.btn-submit:hover {
+  background: rgb(164, 99, 0);
+}
+
+.request-again {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.request-again a {
+  color: #007bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.request-again a:hover {
+  text-decoration: underline;
 }
