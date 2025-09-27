@@ -779,7 +779,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-
 /* ----REGISTER PAGE----*/
 .register {
   font-family: Arial, sans-serif;
@@ -941,4 +940,93 @@
 
 .request-again a:hover {
   text-decoration: underline;
+}
+
+/*----fr reg---*/
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header img {
+  height: 3rem;
+  width: 15rem;
+}
+
+.container-fr {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.container-fr h2 {
+  font-size: 18px;
+  color: #222;
+}
+
+.camera-box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.camera-box img {
+  width: 200px;
+  height: 200px;
+}
+
+.camera-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+#cameraStream {
+  transform: scaleX(-1);
+}
+
+.btn-fr {
+  background: #ff7b00;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 20px;
+  width: 300px;
+}
+.btn-fr:hover {
+  background: #e66a00;
+}
+
+.info-text {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  display: none;
+}
+
+/* Reset button SIMULASI*/
+.reset-btn {
+  background: #999;
+  color: white;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 10px;
+}
+.reset-btn:hover {
+  background: #777;
 }

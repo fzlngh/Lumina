@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Face Recognition Registration</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <a href="./home.html"><img src="./img/Logo.png" alt="Lumina Logo" /></a>
+    </header>
+
+    <main class="container-fr">
+      <h2>Face recognition registration</h2>
+
+      <div class="camera-box">
+        <img
+          id="cameraIcon"
+          src="./img/solar_camera-bold.jpg"
+          alt="Camera Icon"
+        />
+        <video id="cameraStream" autoplay playsinline></video>
+      </div>
+
+      <button id="openCameraBtn" class="btn-fr">Open camera</button>
+
+      <p id="infoText" class="info-text">Front-facing face</p>
+
+      <!-- Tombol Reset SIMULASI -->
+      <button id="resetBtn" class="reset-btn">Reset</button>
+    </main>
+
+    <script>
+      let stream; // simpan stream biar bisa berhenti
+
+      const openBtn = document.getElementById("openCameraBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      const video = document.getElementById("cameraStream");
+      const icon = document.getElementById("cameraIcon");
+      const infoText = document.getElementById("infoText");
+
+      // buka kamera
+      openBtn.addEventListener("click", async () => {
+        try {
+          stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          video.srcObject = stream;
+
+          icon.style.display = "none";
+          video.style.display = "block";
+
+          openBtn.style.display = "none";
+
+          // tampilkan teks "Front-facing face"
+          infoText.textContent = "Front-facing face";
+          infoText.style.display = "block";
+
+          // setelah 5 detik ganti jadi "Finish" untuk simulasi
+          setTimeout(() => {
+            infoText.textContent = "Finish!!!";
+            infoText.style.color = "black"; // biar jelas
+          }, 5000);
+        } catch (err) {
+          alert("Camera access denied: " + err.message);
+        }
+      });
+
+      // reset kamera SIMULASI
+      resetBtn.addEventListener("click", () => {
+        if (stream) {
+          stream.getTracks().forEach((track) => track.stop());
+        }
+
+        video.srcObject = null;
+        video.style.display = "none";
+        icon.style.display = "block";
+
+        openBtn.style.display = "block";
+        infoText.style.display = "none";
+        infoText.textContent = "";
+        infoText.style.color = "#333";
+      });
+    </script>
+  </body>
+</html>
