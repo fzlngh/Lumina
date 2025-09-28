@@ -202,21 +202,68 @@
     </div>
 
     <div class="food-order">
-      <div class="order-item">
-        <div class="order-left">
-          <div class="order-qty">1x</div>
-          <img src="./img/sate.jpg" alt="Sate" class="order-img" />
-          <div class="order-info">
-            <h3>Sate</h3>
-            <p class="order-id">12345678910</p>
-            <p class="order-status">Waiting for payment</p>
-            <p class="order-time">13-12-2025 15.00WIB</p>
-          </div>
+      <div class="order">
+        <div class="order-qty">1x</div>
+        <img src="./img/Sate.jpeg" alt="Sate" class="order-img" />
+        <h3>Sate</h3>
+        <p class="order-id">12345678910</p>
+        <p class="order-status">Waiting for payment</p>
+        <p class="order-time">13-12-2025 15.00WIB</p>
+        <button class="btn-open-bill">Open bill</button>
+      </div>
+      <div class="order">
+        <div class="order-qty">1x</div>
+        <img src="./img/eskrim.jpg" alt="Sate" class="order-img" />
+        <h3>Ice Cream</h3>
+        <p class="order-id">10987654321</p>
+        <p class="order-status">Ready to pickup</p>
+        <p class="order-time">14-12-2025 15.00WIB</p>
+        <button class="btn-open-bill">Open bill</button>
+      </div>
+
+      <!-- payment -->
+      <div class="qris-container">
+        <div class="qris-header">
+          <span class="close-btn">&times;</span>
+          <p>Payment for <strong>12345678910</strong></p>
         </div>
-        <div class="order-right">
-          <button class="btn-open-bill">Open bill</button>
+
+        <div class="qris-body">
+          <div class="qris-box">
+            <img
+              src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=12345678910"
+              alt="QR Code"
+            />
+          </div>
+
+          <div class="qris-info">
+            Complete payment with QRIS before time runs out:
+            <strong>10:00 Mins</strong>
+          </div>
+
+          <button class="qris-btn">Download QRIS</button>
         </div>
       </div>
+      
+      <!-- Order history -->
+      <div class="order-history">
+      <div class="order-history-item">
+        <div class="order-qty">1x</div>
+        <img src="./img/Sate.jpeg" alt="Sate" class="order-img" />
+        <h3>Sate</h3>
+        <p class="order-id">12345678910</p>
+        <a class="payment-success-status" href="#">Transaction complete</a>
+        <p class="order-time">13-12-2025 15.00WIB</p>
+      </div>
+      <div class="order-history-item">
+        <div class="order-qty">1x</div>
+        <img src="./img/eskrim.jpg" alt="Sate" class="order-img" />
+        <h3>Ice Cream</h3>
+        <p class="order-id">10987654321</p>
+         <a class="payment-failed-status" href="#">Transaction failed</a>
+        <p class="order-time">14-12-2025 15.00WIB</p>
+      </div>
+
     </div>
 
     <div id="loginPopup" class="popup hidden">
