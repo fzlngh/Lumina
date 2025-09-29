@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 40px 20px;
+      }
+
+      .profile-page {
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .edit img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .back-btn {
+        cursor: pointer;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+
+      .back-btn img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .profile-pic img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 30px;
+      }
+
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+        width: 100%;
+      }
+
+      .info-row {
+        display: flex;
+        border: 1px solid #ccc;
+        background: #fff;
+      }
+
+      .info-row .label {
+        background: #ffc107;
+        color: #fff; /* teks putih */
+        font-weight: bold;
+        padding: 10px;
+        width: 120px; /* biar tidak terlalu panjang */
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .info-row .value {
+        flex: 1;
+        padding: 10px;
+        text-align: left;
+      }
+
+      .edit-btn {
+        background: #ffc107;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+        transition: background 0.3s;
+      }
+
+      .edit-btn:hover {
+        background: #e6ac00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="profile-page">
+      <div class="back-btn"><img src="./img/ep_back.png" alt="" /></div>
+
+      <div class="profile-pic">
+        <img src="./img/kak-kenji.jpg" alt="Profile Picture" />
+      </div>
+
+      <div class="profile-info">
+        <div class="profile-item">
+          <div class="info-row">
+            <div class="label">Name</div>
+            <div class="value">Kenzie</div>
+          </div>
+          <div class="edit">
+            <a><img src="./img/edit.jpg" alt="edit" /></a>
+          </div>
+        </div>
+
+        <div class="profile-item">
+          <div class="info-row">
+            <div class="label">Email</div>
+            <div class="value">example@gmail.com</div>
+            <div class="edit">
+              <a><img src="./img/edit.jpg" alt="edit" /></a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="info-row">
+            <div class="label">Gender</div>
+            <div class="value">Male</div>
+            <div class="edit">
+              <a><img src="./img/edit.jpg" alt="edit" /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="edit-btn">Edit</button>
+    </div>
+  </body>
+</html>
