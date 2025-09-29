@@ -14,6 +14,7 @@
         justify-content: center;
         align-items: flex-start;
         padding: 40px 20px;
+        position: relative; /* supaya back-btn bisa absolute terhadap body */
       }
 
       .profile-page {
@@ -22,22 +23,27 @@
         max-width: 400px;
       }
 
+      .profile-item {
+        display: flex;
+      }
+
       .edit img {
-        width: 35px;
-        height: 35px;
+        margin-left: 10px;
+        width: 45px;
+        height: 45px;
       }
 
       .back-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
         cursor: pointer;
-        text-align: left;
-        margin-bottom: 20px;
       }
 
       .back-btn img {
         width: 30px;
         height: 30px;
       }
-
       .profile-pic img {
         width: 150px;
         height: 150px;
@@ -73,7 +79,7 @@
       }
 
       .info-row .value {
-        flex: 1;
+        width: 200px;
         padding: 10px;
         text-align: left;
       }
@@ -122,19 +128,19 @@
           <div class="info-row">
             <div class="label">Email</div>
             <div class="value">example@gmail.com</div>
-            <div class="edit">
-              <a><img src="./img/edit.jpg" alt="edit" /></a>
-            </div>
+          </div>
+          <div class="edit">
+            <a><img src="./img/edit.jpg" alt="edit" /></a>
           </div>
         </div>
 
-        <div>
+        <div class="profile-item">
           <div class="info-row">
             <div class="label">Gender</div>
             <div class="value">Male</div>
-            <div class="edit">
-              <a><img src="./img/edit.jpg" alt="edit" /></a>
-            </div>
+          </div>
+          <div class="edit">
+            <a><img src="./img/edit.jpg" alt="edit" /></a>
           </div>
         </div>
       </div>
