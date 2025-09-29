@@ -1210,7 +1210,8 @@
 
 /* Order history */
 .order-history {
-  display: flex;
+  /* display: flex; */
+  display: none;
   flex-direction: column;
   width: 950px;
   padding: 0.5rem;
@@ -1331,4 +1332,73 @@
   width: 400px;
   height: 150px;
   margin-bottom: 10px;
+}
+
+/* Wrapper */
+.settings-page {
+  display: none;
+  text-align: center;
+  width: 100%;
+  max-width: 1250px;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60px;
+  margin-bottom: 70px;
+}
+
+.header img {
+  width: 500px;
+  height: 150px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+/* Settings Menu */
+.settings-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.menu-btn {
+  background: #ffc107;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.logout-btn {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.menu-btn:hover {
+  background: #e6ac00;
+  transform: translateY(-2px);
 }
