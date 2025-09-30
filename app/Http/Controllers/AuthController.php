@@ -42,4 +42,5 @@ public function login(Request $request)
             'message' => 'Logged out'
         ]);
     }
+    
 }
