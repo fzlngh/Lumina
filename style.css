@@ -994,8 +994,11 @@
 }
 
 .header img {
-  height: 3rem;
-  width: 15rem;
+  display: flex;
+  margin-top: 10px;
+  margin-left: 70px;
+  height: 1rem;
+  width: 10rem;
 }
 
 .container-fr {
