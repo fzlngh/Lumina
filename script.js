@@ -4,7 +4,6 @@
 let isLoggedIn = false;
 let cart = [];
 
-const navItems = document.querySelectorAll(".nav-item");
 const categories = document.querySelectorAll(".cat-item");
 const addCartBtns = document.querySelectorAll(".add-cart");
 const orderMenu = document.querySelector(".item-bottom");
@@ -13,6 +12,21 @@ const searchBox = document.querySelector(".search");
 const searchInput = searchBox.querySelector("Input");
 const heroTitle = document.querySelector(".text-opening");
 const recommendationsList = document.getElementById("recommendationsList");
+const hero = document.getElementById("hero");
+const dashboard = document.getElementById("dashboard");
+const foodOrder = document.getElementById("food-order");
+const orderHistory = document.getElementById("order-history");
+const setting = document.getElementById("setting");
+const sidebarRight = document.querySelector(".navbar-right");
+const orderFood = document.getElementById("order-food");
+const qr = document.getElementById("qr");
+const historyOrder = document.getElementById("history-order");
+const settingItem = document.getElementById("setting-item");
+const billBtn = document.getElementById("open-bill");
+const closeQR = document.getElementById("close");
+const qrImg = document.getElementById("qr-img");
+const qrDownload = document.getElementById("download-qr");
+const navItems = [dashboard, foodOrder, orderHistory, setting];
 
 // Popup
 const loginPopup = document.getElementById("loginPopup");
@@ -66,19 +80,71 @@ const recentSwiper = new Swiper(".recent-swiper", {
 // ====================
 // NAVBAR ACTIVE + LOGIN GUARD
 // ====================
-navItems.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    /* 
-    if (!isLoggedIn && !item.classList.contains("active")) {
-      e.preventDefault();
-      showLogin();
-      return;
-    }
-    */
-    navItems.forEach((i) => i.classList.remove("active"));
-    item.classList.add("active");
+function handleNavClick(clickedItem) {
+  // Cek login guard
+  if (!isLoggedIn && !clickedItem.classList.contains("active")) {
+    showLogin();
+    return;
+  }
 
+  // Hapus active dari semua menu
+  navItems.forEach((item) => item.classList.remove("active"));
+
+  // Tambahkan active ke menu yang dipilih
+  clickedItem.classList.add("active");
+
+  // Jika dashboard aktif → aktifkan hero & sidebar right
+  if (clickedItem === dashboard) {
+    hero.classList.add("active");
+    sidebarRight.classList.add("active");
+  } else {
+    hero.classList.remove("active");
+    sidebarRight.classList.remove("active");
+  }
+
+  if (clickedItem === foodOrder) {
+    orderFood.classList.add("active");
+  } else {
+    orderFood.classList.remove("active");
+  }
+
+  if (clickedItem === orderHistory) {
+    historyOrder.classList.add("active");
+  } else {
+    historyOrder.classList.remove("active");
+  }
+
+  if (clickedItem === setting) {
+    settingItem.classList.add("active");
+  } else {
+    settingItem.classList.remove("active");
+  }
+}
+
+// Pasang event listener ke semua menu
+navItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    handleNavClick(item);
   });
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  handleNavClick(dashboard); // dashboard aktif pertama kali
+});
+
+// ====================
+// BILL BUTTON (QR POPUP)
+// ====================
+billBtn.addEventListener("click", () => {
+  if (!isLoggedIn) {
+    showLogin();
+    return;
+  }
+  qr.classList.add("active");
+});
+
+closeQR.addEventListener("click", () => {
+  qr.classList.remove("active");
 });
 
 searchInput.addEventListener("focus", () => {
@@ -94,6 +160,24 @@ searchInput.addEventListener("blur", () => {
     heroTitle.classList.remove("hidden");
     recommendationsList.innerHTML = ""; // clear
   }, 200);
+});
+
+// ====================
+// DOWNLOAD QR IMAGE
+// ====================
+qrDownload.addEventListener("click", () => {
+  const qrSrc = qrImg.getAttribute("src"); // ambil link gambar
+  if (!qrSrc) {
+    alert("QR Code tidak tersedia!");
+    return;
+  }
+
+  const link = document.createElement("a");
+  link.href = qrSrc;
+  link.download = "qr-code.png"; // nama file saat didownload
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 });
 
 // ====================

@@ -27,19 +27,19 @@
           <img class="logo" src="./img/Logo.png" alt="Lumina.png" />
         </div>
         <ul>
-          <li class="nav-item active">
+          <li class="nav-item active" id="dashboard">
             <i class="fa-solid fa-house"></i>
             <h4>Dashboard</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="food-order">
             <i class="fa-solid fa-utensils"></i>
             <h4>Food Order</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="order-history">
             <i class="fa-solid fa-clock-rotate-left"></i>
             <h4>Order History</h4>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="setting">
             <i class="fa-solid fa-gear"></i>
             <h4>Settings</h4>
           </li>
@@ -47,7 +47,7 @@
       </nav>
 
       <!-- Tengah (hero + content) -->
-      <section class="hero">
+      <section class="hero" id="hero">
         <!-- Hero -->
         <div class="hero-item-1">
           <h2 class="text-opening">What're you craving today?</h2>
@@ -188,7 +188,7 @@
       </section>
 
       <!-- Sidebar kanan -->
-      <aside class="navbar-right">
+      <aside class="navbar-right" id="navbar-right">
         <div class="item-top">
           <h2>Hello, guest</h2>
           <i class="fa-solid fa-circle-user fa-2x"></i>
@@ -201,7 +201,7 @@
       </aside>
     </div>
 
-    <div class="food-order">
+    <div class="food-order" id="order-food">
       <div class="order">
         <div class="order-qty">1x</div>
         <img src="./img/Sate.jpeg" alt="Sate" class="order-img" />
@@ -209,7 +209,7 @@
         <p class="order-id">12345678910</p>
         <p class="order-status">Waiting for payment</p>
         <p class="order-time">13-12-2025 15.00WIB</p>
-        <button class="btn-open-bill">Open bill</button>
+        <button class="btn-open-bill" id="open-bill">Open bill</button>
       </div>
       <div class="order">
         <div class="order-qty">1x</div>
@@ -218,19 +218,18 @@
         <p class="order-id">10987654321</p>
         <p class="order-status">Ready to pickup</p>
         <p class="order-time">14-12-2025 15.00WIB</p>
-        <button class="btn-open-bill">Open bill</button>
       </div>
 
       <!-- payment -->
-      <div class="qris-container">
+      <div class="qris-container" id="qr">
         <div class="qris-header">
-          <span class="close-btn">&times;</span>
+          <span class="close-btn" id="close">&times;</span>
           <p>Payment for <strong>12345678910</strong></p>
         </div>
 
         <div class="qris-body">
           <div class="qris-box">
-            <img
+            <img id="qr-img"
               src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=12345678910"
               alt="QR Code"
             />
@@ -241,12 +240,13 @@
             <strong>10:00 Mins</strong>
           </div>
 
-          <button class="qris-btn">Download QRIS</button>
+          <button class="qris-btn" id="download-qr">Download QRIS</button>
         </div>
       </div>
-      
-      <!-- Order history -->
-      <div class="order-history">
+    </div>
+
+    <!-- Order history -->
+    <div class="order-history" id="history-order">
       <div class="order-history-item">
         <div class="order-qty">1x</div>
         <img src="./img/Sate.jpeg" alt="Sate" class="order-img" />
@@ -260,28 +260,25 @@
         <img src="./img/eskrim.jpg" alt="Sate" class="order-img" />
         <h3>Ice Cream</h3>
         <p class="order-id">10987654321</p>
-         <a class="payment-failed-status" href="#">Transaction failed</a>
+        <a class="payment-failed-status" href="#">Transaction failed</a>
         <p class="order-time">14-12-2025 15.00WIB</p>
       </div>
-
     </div>
 
-<div class="settings-page">
-  <!-- Header Logo -->
-  <div class="header">
-    <img src="./img/Logo.png" alt="Lumina">
-  </div>
+    <div class="settings-page" id="setting-item">
+      <!-- Header Logo -->
+      <div class="header">
+        <img src="./img/Logo.png" alt="Lumina" />
+      </div>
 
-  <!-- Settings Menu -->
-  <div class="settings-menu">
-    <button class="menu-btn">Profil</button>
-    <button class="menu-btn">Password</button>
-    <button class="menu-btn">Feedback</button>
-    <button class="logout-btn">Logout</button>
-  </div>
-</div>
-
-
+      <!-- Settings Menu -->
+      <div class="settings-menu">
+        <button class="menu-btn" onclick="window.location.href='./profile.html'">Profil</button>
+        <button class="menu-btn" onclick="window.location.href='./new-password.html'">Password</button>
+        <button class="menu-btn" onclick="window.location.href='#'">Feedback</button>
+        <button class="logout-btn" onclick="window.location.href='#'">Logout</button>
+      </div>
+    </div>
 
     <div id="loginPopup" class="popup hidden">
       <div class="popup-content">

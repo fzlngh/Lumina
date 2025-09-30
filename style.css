@@ -134,7 +134,7 @@
 }
 
 .hero {
-  display: none; /*===saya off kan dulu===*/
+  display: none;
   padding: 2rem 2.5rem;
   background: #f8f9fa;
   min-height: 100vh;
@@ -142,6 +142,10 @@
   margin: 0 auto;
   box-sizing: border-box;
   margin-left: -18px;
+}
+
+.hero.active {
+  display: block;
 }
 
 .hero-item-1 {
@@ -632,7 +636,7 @@
 
 /* Sidebar kanan */
 .navbar-right {
-  display: none; /*===saya off kan dulu===*/
+  display: none;
   width: 250px;
   background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   padding: 2.5rem 2rem;
@@ -643,6 +647,10 @@
   box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
   z-index: 100;
   border-left: 1px solid rgba(248, 182, 2, 0.1);
+}
+
+.navbar-right.active {
+  display: block;
 }
 
 .item-top {
@@ -1081,13 +1089,17 @@
 
 /* Order Item */
 .food-order {
-  display: flex;
+  display: none;
   width: 1000px;
   height: 100vh;
 }
 
+.food-order.active {
+  display: flex;
+}
+
 .order {
-  display: none; /*saya non aktifkan dulu*/
+  display: flex;
   justify-content: space-between;
   align-items: center;
   background: #ffc107;
@@ -1146,7 +1158,12 @@
   border-radius: 10px;
   overflow: hidden;
   background: white;
+  position: fixed;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qris-container.active {
+  display: block;
 }
 
 .qris-header {
@@ -1210,12 +1227,18 @@
 
 /* Order history */
 .order-history {
-  /* display: flex; */
   display: none;
   flex-direction: column;
   width: 950px;
   padding: 0.5rem;
+  position: fixed;
+  top: 30px;
+  left: 17.5rem;
   gap: 1rem;
+}
+
+.order-history.active {
+  display: flex;
 }
 
 .order-history-item {
@@ -1341,6 +1364,13 @@
   width: 100%;
   max-width: 1250px;
   padding: 0;
+  position: fixed;
+  top: 0;
+  left: 90px;
+}
+
+.settings-page.active {
+  display: block;
 }
 
 /* Header */
@@ -1396,6 +1426,11 @@
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   transition: background 0.3s, transform 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgb(191, 0, 0);
+  transform: translateY(-2px);
 }
 
 .menu-btn:hover {
