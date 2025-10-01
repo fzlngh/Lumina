@@ -26,7 +26,11 @@ const billBtn = document.getElementById("open-bill");
 const closeQR = document.getElementById("close");
 const qrImg = document.getElementById("qr-img");
 const qrDownload = document.getElementById("download-qr");
+const checkout = document.getElementById("checkout-btn");
+const sate = document.getElementById("sate");
 const navItems = [dashboard, foodOrder, orderHistory, setting];
+
+checkout.disabled = true;
 
 // Popup
 const loginPopup = document.getElementById("loginPopup");
@@ -230,6 +234,8 @@ addCartBtns.forEach((btn) => {
 function renderCart() {
   if (cart.length === 0) {
     orderMenu.innerHTML = `<h4>Order Menu</h4><p>There's nothing to order</p>`;
+    checkout.classList.add("disable"); // tombol nonaktif
+    checkout.disabled = true; // biar benar-benar gak bisa diklik
     return;
   }
 
@@ -239,6 +245,9 @@ function renderCart() {
     p.textContent = `${index + 1}. ${item}`;
     orderMenu.appendChild(p);
   });
+
+  checkout.classList.remove("disable"); // aktifkan tombol
+  checkout.disabled = false;
 }
 
 // ====================
@@ -262,6 +271,31 @@ loginBtn.addEventListener("click", () => {
   } else {
     alert("Please enter your name!");
   }
+});
+
+// ====================
+// CHECKOUT BUTTON
+// ====================
+
+checkout.addEventListener("click", () => {
+  if (!isLoggedIn) {
+    showLogin();
+    return;
+  }
+
+  if (cart.length === 0) {
+    alert("Keranjang masih kosong!");
+    return;
+  }
+
+  // Reset cart
+  cart = [];
+  renderCart();
+
+  // Tambahkan class active ke sate
+  sate.classList.add("active");
+
+  alert("Checkout berhasil!");
 });
 
 // ====================
