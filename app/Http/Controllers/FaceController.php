@@ -3,41 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use App\Models\Face;
 
 class FaceController extends Controller
 {
+    // === Upload foto dari ESP32 ===
     public function upload(Request $request)
     {
         $request->validate([
             'image_base64' => 'required|string',
-            'device_id'    => 'nullable|string|max:50',
-            'timestamp'    => 'nullable|date',
+            'device_id'    => 'required|string',
         ]);
 
-        $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $request->image_base64));
+        $imageData = $request->input('image_base64');
+        $deviceId  = $request->input('device_id');
 
-        if (!$imageData) {
+        // Hilangkan prefix "data:image/jpeg;base64,"
+        if (strpos($imageData, ',') !== false) {
+            $imageData = explode(',', $imageData)[1];
+        }
+
+        $binaryData = base64_decode($imageData);
+        if (!$binaryData) {
             return response()->json([
-                'status'  => 'error',
-                'message' => 'Gagal decode gambar.'
+                'status' => 'error',
+                'message' => 'Invalid base64 image'
             ], 400);
         }
 
-        $hash     = hash('sha256', $imageData);
-        $filename = $hash . '.jpg';
+        // Generate hash unik
+        $hash = Str::random(16);
+        $fileName = $hash . '.jpg';
 
-        Storage::disk('local')->put('faces/' . $filename, $imageData);
+        // Simpan file
+        Storage::put("faces/$fileName", $binaryData);
 
-        DB::table('face_logs')->insert([
-            'hash'       => $hash,
-            'device_id'  => $request->device_id,
-            'timestamp'  => $request->timestamp ?? now(),
-            'result'     => 'pending',
-            'confidence' => null,
-            'created_at' => now(),
-            'updated_at' => now(),
+        // DEMO MODE: device tertentu otomatis valid
+        $userId = 1;
+        if ($deviceId === "esp32cam-1") {
+            $userId = 1; // otomatis valid
+        }
+
+        // Simpan ke DB
+        $face = Face::create([
+            'hash'      => $hash,
+            'file'      => $fileName,
+            'device_id' => $deviceId,
+            'user_id'   => $userId,
+            'status'    => 'pending',
         ]);
 
         return response()->json([
@@ -45,71 +60,57 @@ class FaceController extends Controller
             'message' => 'Gambar berhasil diterima',
             'data'    => [
                 'hash' => $hash,
-                'file' => $filename,
+                'file' => $fileName,
             ]
-        ], 201);
+        ]);
     }
 
-    public function getLogs()
-    {
-        return DB::table('face_logs')
-            ->orderBy('created_at', 'desc')
-            ->limit(50)
-            ->get();
-    }
-
+    // === Cek hasil berdasarkan hash ===
     public function getLogByHash($hash)
     {
-        $log = DB::table('face_logs')->where('hash', $hash)->first();
-        if (!$log) {
-            return response()->json(['error' => 'Not found'], 404);
-        }
-        return $log;
-    }
-    public function getPendingFaces()
-{
-    $faces = DB::table('face_logs')
-        ->where('result', 'pending')
-        ->orderBy('created_at', 'asc')
-        ->get();
-
-    return response()->json($faces);
-}
-
-
-    public function updateResult(Request $request, $hash)
-    {
-        $request->validate([
-            'result'     => 'required|string|in:valid,invalid,pending',
-            'confidence' => 'nullable|numeric|min:0|max:1',
-        ]);
-
-        $log = DB::table('face_logs')->where('hash', $hash)->first();
-
-        if (!$log) {
-            return response()->json(['error' => 'Log not found'], 404);
-        }
-
-        // Update hasil validasi wajah
-        DB::table('face_logs')->where('hash', $hash)->update([
-            'result'     => $request->result,
-            'confidence' => $request->confidence,
-            'updated_at' => now(),
-        ]);
-
-        if ($log->order_id) {
-            $newStatus = $request->result === 'valid' ? 'completed' : 'cancelled';
-            DB::table('orders')->where('id', $log->order_id)->update([
-                'status'     => $newStatus,
-                'updated_at' => now(),
-            ]);
+        $face = Face::where('hash', $hash)->first();
+        if (!$face) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Hash not found'
+            ], 404);
         }
 
         return response()->json([
-            'message'    => 'Result updated',
-            'hash'       => $hash,
-            'result'     => $request->result,
-            'confidence' => $request->confidence,
+            'hash'       => $face->hash,
+            'device_id'  => $face->device_id,
+            'result'     => $face->status,      // pending / valid / invalid
+            'confidence' => $face->confidence,
+            'user_id'    => $face->user_id,
+        ]);
+    }
+
+    // === Ambil list pending untuk worker ===
+    public function getPendingFaces()
+    {
+        return Face::where('status', 'pending')->get();
+    }
+
+    // === Update hasil dari worker ===
+    public function updateResult(Request $request, $hash)
+    {
+        $face = Face::where('hash', $hash)->first();
+        if (!$face) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'Hash not found'
+            ], 404);
+        }
+
+        $face->status = $request->input('result');
+        $face->confidence = $request->input('confidence');
+        $face->user_id = $request->input('user_id', $face->user_id);
+        $face->save();
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Result updated',
+            'data'    => $face
         ]);
     }
 }

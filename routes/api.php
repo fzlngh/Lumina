@@ -16,10 +16,12 @@ Route::post('/face/{hash}/result', [FaceController::class, 'updateResult']);
 Route::get('/orders/validating', [OrderController::class, 'getValidatingOrders']);
 Route::post('/orders/{id}/validate', [OrderController::class, 'validateOrder']);
 
+// Bebas diakses oleh ESP32
+Route::post('/face/upload', [FaceController::class, 'upload']);
+Route::get('/face/{hash}', [FaceController::class, 'getLogByHash']);
+
 // User routes pakai Sanctum
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/orders/{id}/confirm', [OrderController::class, 'confirmOrder']);
-    Route::post('/face/upload', [FaceController::class, 'upload']);
     Route::get('/face/logs', [FaceController::class, 'getLogs']);
-    Route::get('/face/{hash}', [FaceController::class, 'getLogByHash']);
 });

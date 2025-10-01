@@ -14,18 +14,16 @@ class RegisterController extends Controller
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'photos'   => 'required|array|min:3|max:3',  // harus 3 foto
+            'photos'   => 'required|array|min:3|max:3', 
             'photos.*' => 'image|mimes:jpg,jpeg,png|max:4096',
         ]);
 
-        // Buat user baru
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
-        // Simpan foto ke dataset/{user_id}/
         $datasetPath = "dataset/" . $user->id;
         if (!Storage::disk('local')->exists($datasetPath)) {
             Storage::disk('local')->makeDirectory($datasetPath);
