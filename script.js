@@ -137,19 +137,19 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // ====================
-// BILL BUTTON (QR POPUP)
+// BILL BUTTON (OPEN MIDTRANS LINK)
 // ====================
 billBtn.addEventListener("click", () => {
   if (!isLoggedIn) {
     showLogin();
     return;
   }
-  qr.classList.add("active");
+
+  // langsung buka link midtrans
+  window.open("https://app.sandbox.midtrans.com/payment-links/1759286743747", "_blank");
 });
 
-closeQR.addEventListener("click", () => {
-  qr.classList.remove("active");
-});
+
 
 searchInput.addEventListener("focus", () => {
   searchBox.classList.add("active");
@@ -164,24 +164,6 @@ searchInput.addEventListener("blur", () => {
     heroTitle.classList.remove("hidden");
     recommendationsList.innerHTML = ""; // clear
   }, 200);
-});
-
-// ====================
-// DOWNLOAD QR IMAGE
-// ====================
-qrDownload.addEventListener("click", () => {
-  const qrSrc = qrImg.getAttribute("src"); // ambil link gambar
-  if (!qrSrc) {
-    alert("QR Code tidak tersedia!");
-    return;
-  }
-
-  const link = document.createElement("a");
-  link.href = qrSrc;
-  link.download = "qr-code.png"; // nama file saat didownload
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 });
 
 // ====================
