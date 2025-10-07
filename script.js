@@ -28,8 +28,10 @@ const qrImg = document.getElementById("qr-img");
 const qrDownload = document.getElementById("download-qr");
 const checkout = document.getElementById("checkout-btn");
 const sate = document.getElementById("sate");
+const cancel = document.getElementById("cancel-btn");
 const navItems = [dashboard, foodOrder, orderHistory, setting];
 
+cancel.disabled = true;
 checkout.disabled = true;
 
 // Popup
@@ -146,10 +148,11 @@ billBtn.addEventListener("click", () => {
   }
 
   // langsung buka link midtrans
-  window.open("https://app.sandbox.midtrans.com/payment-links/1759286743747", "_blank");
+  window.open(
+    "https://app.sandbox.midtrans.com/payment-links/1759286743747",
+    "_blank"
+  );
 });
-
-
 
 searchInput.addEventListener("focus", () => {
   searchBox.classList.add("active");
@@ -218,6 +221,8 @@ function renderCart() {
     orderMenu.innerHTML = `<h4>Order Menu</h4><p>There's nothing to order</p>`;
     checkout.classList.add("disable"); // tombol nonaktif
     checkout.disabled = true; // biar benar-benar gak bisa diklik
+    cancel.classList.add("disable");
+    cancel.disabled = true;
     return;
   }
 
@@ -230,7 +235,23 @@ function renderCart() {
 
   checkout.classList.remove("disable"); // aktifkan tombol
   checkout.disabled = false;
+  cancel.classList.remove("disable");
+  cancel.disabled = false;
 }
+
+// ====================
+// CANCEL BUTTON
+// ====================
+cancel.addEventListener("click", () => {
+  if (cart.length === 0) return; // jika kosong, abaikan
+
+  // Kosongkan cart
+  cart = [];
+  renderCart();
+
+  // Kembalikan tampilan ke semula
+  alert("Pesanan dibatalkan!");
+});
 
 // ====================
 // LOGIN POPUP
