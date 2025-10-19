@@ -746,7 +746,7 @@
 }
 
 .cancel {
-  background-color: #f8b602;
+  background-color: red;
   color: white;
   border: none;
   margin-top: 10px;
@@ -764,8 +764,12 @@
   opacity: 0.7;
 }
 
-.navbar-right button:hover {
+.checkout:hover {
   background-color: #d19900; /* warna kuning lebih gelap pas hover */
+}
+
+.cancel:hover {
+  background-color: rgb(125, 0, 0);
 }
 
 .navbar-right hr {

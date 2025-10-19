@@ -217,23 +217,47 @@ addCartBtns.forEach((btn) => {
 });
 
 function renderCart() {
+  // Jika kosong
   if (cart.length === 0) {
     orderMenu.innerHTML = `<h4>Order Menu</h4><p>There's nothing to order</p>`;
-    checkout.classList.add("disable"); // tombol nonaktif
-    checkout.disabled = true; // biar benar-benar gak bisa diklik
+    checkout.classList.add("disable");
+    checkout.disabled = true;
     cancel.classList.add("disable");
     cancel.disabled = true;
     return;
   }
 
+  // Jika ada isi cart
   orderMenu.innerHTML = `<h4>Order Menu</h4>`;
   cart.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.style.display = "flex";
+    div.style.justifyContent = "space-between";
+    div.style.alignItems = "center";
+    div.style.marginBottom = "6px";
+
     const p = document.createElement("p");
     p.textContent = `${index + 1}. ${item}`;
-    orderMenu.appendChild(p);
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "❌";
+    removeBtn.style.background = "transparent";
+    removeBtn.style.border = "none";
+    removeBtn.style.cursor = "pointer";
+    removeBtn.style.fontSize = "16px";
+
+    // Event hapus item
+    removeBtn.addEventListener("click", () => {
+      cart.splice(index, 1); // hapus item berdasarkan index
+      renderCart(); // render ulang tampilan cart
+    });
+
+    div.appendChild(p);
+    div.appendChild(removeBtn);
+    orderMenu.appendChild(div);
   });
 
-  checkout.classList.remove("disable"); // aktifkan tombol
+  checkout.classList.remove("disable");
   checkout.disabled = false;
   cancel.classList.remove("disable");
   cancel.disabled = false;
@@ -243,14 +267,13 @@ function renderCart() {
 // CANCEL BUTTON
 // ====================
 cancel.addEventListener("click", () => {
-  if (cart.length === 0) return; // jika kosong, abaikan
+  if (cart.length === 0) return;
 
-  // Kosongkan cart
-  cart = [];
-  renderCart();
-
-  // Kembalikan tampilan ke semula
-  alert("Pesanan dibatalkan!");
+  if (confirm("Yakin ingin membatalkan semua pesanan?")) {
+    cart = [];
+    renderCart();
+    alert("Semua pesanan telah dibatalkan!");
+  }
 });
 
 // ====================
