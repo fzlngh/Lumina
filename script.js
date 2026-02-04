@@ -65,6 +65,7 @@ const foodSwiper = new Swiper(".food-swiper", {
   spaceBetween: 16,
   freeMode: true,
   grabCursor: true,
+  loop : true,
   breakpoints: {
     640: { slidesPerView: 2 },
     1024: { slidesPerView: 3 },
@@ -77,6 +78,7 @@ const recentSwiper = new Swiper(".recent-swiper", {
   spaceBetween: 16,
   freeMode: true,
   grabCursor: true,
+  loop : true,
   breakpoints: {
     640: { slidesPerView: 2 },
     1024: { slidesPerView: 3 },

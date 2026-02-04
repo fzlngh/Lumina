@@ -138,7 +138,7 @@
   padding: 2rem 2.5rem;
   background: #f8f9fa;
   min-height: 100vh;
-  max-width: 800px;
+  max-width: 1020px;
   margin: 0 auto;
   box-sizing: border-box;
   margin-left: -18px;
@@ -158,8 +158,8 @@
 
 .hero h2 {
   color: #212529;
-  font-size: 1.7rem;
-  font-weight: 800;
+  font-size: 2.3rem;
+  font-weight: 1000;
   background: linear-gradient(135deg, #212529 0%, #495057 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -268,13 +268,13 @@
 }
 
 .search.active {
-  width: 700px;
+  width: 950px;
   transition: width 0.7s ease, box-shadow 0.4s ease;
 }
 
 .search.active ~ .search-recommendations {
   display: block;
-  width: 700px;
+  width: 950px;
 }
 
 .display-item-2 {
@@ -508,7 +508,7 @@
 /* Swiper enhancements */
 .swiper {
   padding: 1.5rem 0 3rem 0;
-  width: 100%;
+  width: 60%;
   overflow: visible;
 }
 
@@ -1127,7 +1127,7 @@
 /*==order menu==*/
 .food-order {
   flex: 1; /* isi ruang sisa */
-  width: 1000px;
+  width: 1020px;
   padding: 2rem;
   display: flex;
   flex-direction: column;
